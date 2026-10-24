@@ -1,0 +1,203 @@
+/* ==========================================================================
+   COMMON CSS FOR LOGIN & REGISTER PAGES (CINEMATIC MINIMAL DARK)
+   ========================================================================== */
+
+/* Μηδενισμός αρχικών κενών του browser */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Φόντο 100% ίδιο με το κεντρικό σου body */
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Κεντράρει τις κάρτες απόλυτα στην οθόνη */
+    position: relative;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   ΚΟΥΜΠΙ ΕΠΙΣΤΡΟΦΗΣ (BACK TO HOME) - ΠΑΝΩ ΑΡΙΣΤΕΡΑ
+   ========================================================================== */
+.btn-back-home {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4); /* Minimal χαμηλό contrast όπως οι τίτλοι σου */
+    font-size: 15px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+}
+
+/* Εφέ στο Hover του Back Button */
+.btn-back-home:hover {
+    color: #4CAF50; /* Φωτίζεται με το πράσινο του brand About Food */
+    transform: translateX(-4px); /* Διακριτική κίνηση προς τα αριστερά */
+}
+
+/* ==========================================================================
+   ΚΑΡΤΑ ΦΟΡΜΑΣ (CARD CONTAINER)
+   ========================================================================== */
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: rgba(0, 0, 0, 0.4); /* Ημιδιαφανές panel που σπάει όμορφα στο σκοτάδι */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Header της Φόρμας (Τίτλοι) */
+.login-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-header h2 {
+    font-size: 32px;
+    font-weight: 100; /* Ultra minimal thin look όπως το ζήτησες */
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    font-size: 14px;
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   ΠΕΔΙΑ ΕΙΣΑΓΩΓΗΣ (LABELS & INPUTS)
+   ========================================================================== */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Τα input fields και το select drop-down μενού */
+.input-group input, .select-role {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* Όταν ο χρήστης κάνει κλικ μέσα στα πεδία (Focus) */
+.input-group input:focus, .select-role:focus {
+    border-color: #4CAF50;
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.15);
+}
+
+/* Σκούρο φόντο για τις επιλογές μέσα στο drop-down μενού ρόλων */
+.select-role option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   ΚΟΥΜΠΙ ΥΠΟΒΟΛΗΣ (SUBMIT BUTTON)
+   ========================================================================== */
+.btn-login-submit {
+    width: 100%;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Hover εφέ στο κουμπί */
+.btn-login-submit:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px); /* Απαλό ανασήκωμα */
+}
+
+/* ==========================================================================
+   LINKS ΣΤΟ ΚΑΤΩ ΜΕΡΟΣ (FOOTER LINKS)
+   ========================================================================== */
+.login-footer {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-footer p {
+    font-size: 14px;
+    color: #888888;
+    font-weight: 300;
+}
+
+.login-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.login-footer a:hover {
+    color: #45a049;
+    text-decoration: underline;
+}
+
+.login-footer .forgot-pass {
+    font-size: 13px;
+    color: #666666;
+    font-weight: normal;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (ΓΙΑ ΚΙΝΗΤΑ)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .btn-back-home {
+        top: 20px;
+        left: 20px;
+        font-size: 13px;
+    }
+}
