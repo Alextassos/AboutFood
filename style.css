@@ -1,0 +1,586 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.8)
+}
+
+#head{
+    height: 90px;
+}
+#menu {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;           
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Ευθυγράμμιση για το μοντέρνο λογότυπο */
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-top: 25px;              
+}
+
+.modern-logo-icon {
+    width: 38px;
+    height: 38px;
+    transition: transform 0.3s ease;
+}
+
+.logo a:hover .modern-logo-icon {
+    transform: rotate(5deg) scale(1.05); 
+}
+
+.logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif, system-ui;
+    color: #0d0d0d;                
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.logo-subtext {
+    font-family: 'Montserrat', sans-serif, system-ui;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4CAF50; 
+    letter-spacing: 5px;
+    margin-top: 2px;
+}   
+
+/* ==========================================================================
+   ΝΕΟ: ΣΤΥΛ ΓΙΑ ΤΗ ΜΟΝΤΕΡΝΑ ΜΠΑΡΑ ΑΝΑΖΗΤΗΣΗΣ
+   ========================================================================== */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15); /* Ημιδιαφανές για να δένει με το head */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px; /* Απόλυτα smooth στρογγυλεμένες άκρες */
+    padding: 6px 16px;
+    margin-top: 25px; /* Ευθυγράμμιση στην ίδια ευθεία με τα υπόλοιπα */
+    width: 320px;
+    transition: all 0.3s ease;
+}
+
+.search-input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 100%;
+}
+
+/* Αλλαγή χρώματος του placeholder κειμένου */
+.search-input::placeholder {
+    color: #cccccc;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 8px;
+}
+
+.search-btn svg stroke {
+    color: #cccccc; /* Αλλαγή χρώματος του icon */
+}
+
+/* Εφέ όταν ο χρήστης κάνει κλικ για να γράψει */
+.search-container:focus-within {
+    background-color: rgba(255, 255, 255, 0.95); /* Γίνεται καθαρό λευκό */
+    border-color: #4CAF50; /* Πράσινο περίγραμμα */
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+    width: 360px; /* Μεγαλώνει ελαφρώς το πλάτος */
+}
+
+.search-container:focus-within .search-input {
+    color: #1a1a1a; /* Το κείμενο γίνεται σκούρο για να διαβάζεται στο λευκό πλέον φόντο */
+}
+
+/* ========================================================================== */
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;        
+    gap: 60px;   
+    justify-content: center;
+    margin-top: 25px;              
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: #fdeded;         
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    padding-bottom: 6px;
+    background-image: linear-gradient(to right, transparent, #4CAF50, transparent);
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+    background-size: 0% 1px; 
+    transition: color 0.3s ease, background-size 0.3s ease; 
+}
+
+/* Όταν το ποντίκι πάει πάνω στο link (Hover) */
+#menu ul li a:hover {
+    color:rgba(255, 255, 255, 0.3);       
+    background-size: 100% 2px;  
+}
+
+.hero-section {
+    width: 100%;
+    height: 450px;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 35%, rgba(0,0,0,0.1)), url('photo/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+.hero-content {
+    max-width: 550px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif, system-ui; 
+    animation: fadeIn 1s ease-out; 
+}
+/* Ο κεντρικός τίτλος (Connecting Suppliers & Customers) */
+.hero-content h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    color:rgba(255, 255, 255, 0.4);
+}
+
+/* Η περιγραφή από κάτω */
+.hero-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e0e0e0; 
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+/* Το μοντέρνο κουμπί Register Now */
+.btn-register {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #4CAF50; 
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 6px; /* Ελαφρώς στρογγυλεμένες γωνίες */
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); /* Απαλό πράσινο glow */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Ultra ομαλό transition */
+}
+
+/* Εφέ όταν ο χρήστης περνάει το ποντίκι πάνω από το κουμπί (Hover) */
+.btn-register:hover {
+    background-color: #45a049; /* Ελαφρώς πιο σκούρο πράσινο */
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5); /* Πιο έντονο glow */
+    transform: translateY(-3px); /* Το κουμπί ανασηκώνεται ελαφρώς */
+}
+
+/* Εφέ όταν ο χρήστης κάνει κλικ στο κουμπί (Active) */
+.btn-register:active {
+    transform: translateY(-1px); /* Επιστρέφει ελαφρώς προς τα κάτω */
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+}
+
+/* Animation για την ομαλή εμφάνιση του Hero κατά το load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ==========================================================================
+   BECOMING A SUPPLIER SECTION STYLING (SAME AS HEAD COLOR)
+   ========================================================================== */
+
+.supplier-cta-section {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* ΑΚΡΙΒΩΣ ΤΟ ΧΡΩΜΑ ΤΟΥ HEAD */
+    padding: 80px 40px;        
+    margin: 0;        /* Κολλάει στις άκρες της οθόνης χωρίς κενά */
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Το container του τίτλου */
+.supplier-title-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;            
+}
+
+/* Η γραμμή: Ξεκινάει διάφανη από αριστερά και φωτίζεται σε έντονο πράσινο */
+.supplier-title-wrapper::before {
+    content: '';
+    flex: 1; 
+    height: 2px;               
+    background: linear-gradient(to right, transparent, #4CAF50); 
+    margin-right: 30px; 
+}
+
+/* Ο Τίτλος σε λευκό χρώμα */
+.supplier-title {
+    font-size: 32px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.4);            
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    text-transform: uppercase; 
+}
+
+/* Το σώμα του κειμένου και το κουμπί */
+.supplier-content {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   
+    padding: 0 40px 0 0;       
+    box-sizing: border-box;
+}
+
+/* Το κείμενο της περιγραφής */
+.supplier-content p {
+    max-width: 750px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #e0e0e0;            /* Απαλό γαλακτερό λευκό για άψογη ανάγνωση στο ημιδιάφανο μαύρο */
+    margin-bottom: 35px;
+    text-align: right;         
+}
+
+/* Το κουμπί "Start Selling" */
+.btn-supplier {
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+    color: #4CAF50;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 28px;
+    border: 2px solid #4CAF50; 
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Hover εφέ: Το κουμπί γεμίζει με πράσινο χρώμα */
+.btn-supplier:hover {
+    background-color: #4CAF50;
+    color: #ffffff;
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px);
+}
+/* ==========================================================================
+   BUYERS SECTION WITH AUTOMATIC FADE SLIDESHOW
+   ========================================================================== */
+
+.buyers-section {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Ελαφρώς πιο ανοιχτό από το Head για βάθος */
+    padding: 100px 40px;
+    margin: 0; /* Κολλάει απόλυτα με το Become a Supplier */
+    box-sizing: border-box;
+    font-family: sans-serif;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.buyers-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Κατακόρυφο κεντράρισμα */
+    justify-content: space-between;
+    gap: 80px;
+}
+
+/* Αριστερή πλευρά (Κείμενο) */
+.buyers-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.buyers-title {
+    font-size: 32px;
+    font-weight: 100; /* Minimal light γραμματοσειρά όπως ζήτησες */
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.buyers-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin-bottom: 35px;
+}
+
+/* Το κουμπί που οδηγεί στη σελίδα των προμηθευτών */
+/* Το νέο, διακριτικό minimal κουμπί/link */
+.btn-buyers {
+    display: inline-block;
+    text-decoration: none;
+    color: #4CAF50;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 0;
+    background-image: linear-gradient(to right, transparent, #4CAF50, transparent);
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+    background-size: 0% 2px; /* Αρχικά η γραμμή είναι κρυφή */
+    transition: color 0.3s ease, background-size 0.3s ease, transform 0.3s ease; 
+}
+
+/* Ήπιο εφέ στο Hover */
+.btn-buyers:hover {
+    color: #45a049;       
+    background-size: 100% 2px;  /* Η λεπτή γραμμή απλώνει στο 100% */
+    transform: translateX(3px); /* Μια πολύ διακριτική κίνηση προς τα δεξιά */
+}
+
+/* Δεξιά πλευρά (Το κουτί του Slideshow) */
+.buyers-slideshow {
+    flex: 1;
+    height: 400px;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; /* Στρογγυλεμένες γωνίες στις φωτογραφίες */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Premium σκιές */
+}
+
+/* Ρυθμίσεις για την κάθε φωτογραφία (Slide) */
+.buyers-slideshow .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fadeSlideshow 16s linear infinite; /* 16 δευτερόλεπτα συνολικός κύκλος */
+}
+
+/* Χρονισμός εμφάνισης για 4 φωτογραφίες (κάθε μία ξεκινάει με καθυστέρηση 4 δευτερολέπτων) */
+.buyers-slideshow .slide:nth-child(1) { animation-delay: 0s; }
+.buyers-slideshow .slide:nth-child(2) { animation-delay: 4s; }
+.buyers-slideshow .slide:nth-child(3) { animation-delay: 8s; }
+.buyers-slideshow .slide:nth-child(4) { animation-delay: 12s; }
+
+/* Το animation που κάνει το απαλό fade in και fade out */
+@keyframes fadeSlideshow {
+    0% { opacity: 0; }
+    5% { opacity: 1; }      /* Εμφάνιση (Fade in) */
+    25% { opacity: 1; }     /* Παραμονή στην οθόνη */
+    30% { opacity: 0; }     /* Εξαφάνιση (Fade out) */
+    100% { opacity: 0; }
+}
+/* ==========================================================================
+   FEATURES SECTION STYLING
+   ========================================================================== */
+
+.features-section {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Ίδιο φόντο με το Supplier Section για συνοχή */
+    padding: 80px 40px;
+    margin: 0; /* Εφάπτεται τέλεια με το buyers-section */
+    box-sizing: border-box;
+    font-family: sans-serif;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.features-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    /* Δημιουργεί αυτόματα 4 στήλες που γίνονται responsive σε μικρότερες οθόνες */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+/* Η κάρτα για το κάθε πλεονέκτημα */
+.feature-card {
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Απαλή κίνηση στο hover */
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Το κουτί του εικονιδίου */
+.feature-icon {
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%; /* Απόλυτα στρογγυλό minimal περίγραμμα */
+    transition: all 0.3s ease;
+}
+
+/* Το εικονίδιο φωτίζεται ελαφρώς στο hover */
+.feature-card:hover .feature-icon {
+    border-color: #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+    background-color: rgba(76, 175, 80, 0.05);
+}
+
+/* Οι τίτλοι των πλεονεκτημάτων */
+.feature-card h3 {
+    font-size: 20px;
+    font-weight: 100; /* Thin look για να ταιριάζει με το design σου */
+    color: rgba(255, 255, 255, 0.6); /* Διακριτικό λευκό */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* Η περιγραφή */
+.feature-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #b3b3b3; /* Απαλό γκρι */
+    font-weight: 300;
+}
+.cart-container {
+    margin-top: 25px; /* Απόλυτη ευθυγράμμιση με search και logo */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.cart-btn:hover {
+    transform: scale(1.08); /* Ήπιο focus εφέ */
+}
+
+/* Το κυκλάκι με τον αριθμό των προϊόντων */
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   ΝΕΟ: ΣΤΥΛ ΓΙΑ ΤΟ MINIMAL DARK FOOTER
+   ========================================================================== */
+.main-footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Πολύ βαθύ σκούρο για το τελείωμα */
+    padding: 60px 40px 30px 40px;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Λίστα με τα links του footer */
+.footer-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-links li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4); /* Ίδια minimal αισθητική weight/contrast */
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+    color: #4CAF50; /* Φωτίζεται με το πράσινο του brand στο hover */
+}
+
+/* Το copyright section */
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Food - Login</title>
+    <!-- Σύνδεση με το αρχείο static/login.css -->
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+
+<!-- Κουμπί Επιστροφής στην Αρχική -->
+<a href="/index.html" class="btn-back-home">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    <span>Back to Home</span>
+</a>
+
+<div class="login-wrapper">
+    <!-- Κάρτα της Φόρμας Σύνδεσης -->
+    <div class="login-card">
+        
+        <!-- Τίτλος / Branding -->
+        <div class="login-header">
+            <h2>Welcome Back</h2>
+            <p>Access the About Food Marketplace</p>
+        </div>
+
+        <!-- Φόρμα Σύνδεσης (Sign In Only) -->
+        <form action="/login" method="POST" class="login-form">
+            
+            <!-- Πεδίο Email -->
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="enter your email" required>
+            </div>
+
+            <!-- Πεδίο Password -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="enter your password" required>
+            </div>
+
+            <!-- Κουμπί Login -->
+            <button type="submit" class="btn-login-submit">Sign In</button>
+        </form>
+
+        <!-- Links για Ξεχασμένο Κωδικό -->
+        <div class="login-footer">
+            <p><a href="/forgot" class="forgot-pass">Forgot password?</a></p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
