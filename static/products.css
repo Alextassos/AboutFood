@@ -265,3 +265,50 @@ body{
 .footer-links li a:hover { color: #4CAF50; }
 .footer-bottom { width: 100%; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px; }
 .footer-bottom p { font-size: 13px; color: rgba(255, 255, 255, 0.2); font-weight: 300; }
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES ΓΙΑ ΚΙΝΗΤΑ (products.css)
+   ========================================================================== */
+@media (max-width: 992px) {
+    #menu {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    #head {
+        height: auto;
+    }
+
+    .logo a, .search-container, .cart-container, #menu ul {
+        margin-top: 0;
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    #menu ul {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .products-main {
+        padding: 0 20px;
+        margin: 40px auto;
+    }
+
+    .products-header {
+        text-align: center;
+    }
+
+    .products-header h2 {
+        font-size: 26px;
+    }
+
+    /* Το grid προσαρμόζεται για μικρές οθόνες */
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+}

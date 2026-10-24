@@ -584,3 +584,87 @@ body{
     font-weight: 300;
     letter-spacing: 0.5px;
 }
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES ΓΙΑ ΚΙΝΗΤΑ (style.css)
+   ========================================================================== */
+@media (max-width: 992px) {
+    /* Το header γίνεται κατακόρυφο για να χωράνε όλα */
+    #menu {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+    
+    #head {
+        height: auto; /* Καταργούμε το σταθερό ύψος των 90px */
+    }
+
+    .logo a, .search-container, #menu ul {
+        margin-top: 0; /* Μηδενίζουμε τα margins αφού πλέον είναι σε στήλη */
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: 400px; /* Η μπάρα πιάνει περισσότερο χώρο */
+    }
+
+    #menu ul {
+        gap: 25px; /* Μικραίνουμε την απόσταση των links */
+        flex-wrap: wrap; /* Αν δεν χωράνε, σπάνε σε επόμενη σειρά */
+    }
+
+    /* Hero Section */
+    .hero-section {
+        height: auto;
+        padding: 80px 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    /* Supplier & Buyers Section */
+    .supplier-title-wrapper::before {
+        display: none; /* Κρύβουμε τη γραμμή στα κινητά για να μην πιάνει χώρο */
+    }
+
+    .supplier-title {
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .supplier-content p, .buyers-content p {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .supplier-content {
+        align-items: center;
+        padding: 0;
+    }
+
+    /* Buyers Section & Slideshow */
+    .buyers-container {
+        flex-direction: column; /* Το κείμενο πάνω, το slideshow κάτω */
+        gap: 40px;
+    }
+
+    .buyers-title {
+        text-align: center;
+        font-size: 26px;
+    }
+
+    .buyers-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .buyers-slideshow {
+        width: 100%;
+        max-width: 100%;
+        height: 300px; /* Μικρότερο ύψος στα κινητά */
+    }
+}
