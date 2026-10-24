@@ -147,3 +147,97 @@ body{
 .footer-links li a:hover { color: #4CAF50; }
 .footer-bottom { width: 100%; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px; }
 .footer-bottom p { font-size: 13px; color: rgba(255, 255, 255, 0.2); font-weight: 300; }
+/* ==========================================================================
+   ΑΠΟΛΥΤΑ MOBILE FRIENDLY LAYOUT (about.css)
+   ========================================================================== */
+@media (max-width: 992px) {
+    #head {
+        height: auto;
+        padding: 15px 10px;
+    }
+
+    /* Σωστή mobile διάταξη για το μενού */
+    #menu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Επιτρέπει στα στοιχεία να αλλάζουν σειρά */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        gap: 15px;
+    }
+
+    .logo a {
+        margin-top: 0;
+    }
+
+    .cart-container {
+        margin-top: 0;
+        order: 2; /* Το καλάθι μένει δίπλα στο logo */
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 5px;
+        order: 3; /* Η μπάρα σπάει στη 2η σειρά */
+        padding: 10px 16px;
+    }
+
+    #menu ul {
+        width: 100%;
+        flex-direction: column; /* Κατακόρυφη στοίχιση των links */
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+        order: 4;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 15px 0;
+        border-radius: 6px;
+    }
+
+    #menu ul li a {
+        font-size: 18px;
+        display: block;
+        padding: 5px 0;
+    }
+
+    /* ==========================================================================
+       ABOUT US CONTENT RESPONSIVE
+       ========================================================================== */
+    .about-main {
+        padding: 0 20px;
+        margin: 40px auto;
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .about-header h2 {
+        font-size: 26px;
+    }
+
+    /* Η ιστορία γίνεται κάθετη (κείμενο πάνω, εικόνα κάτω) */
+    .about-story-section {
+        flex-direction: column;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .story-text h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .story-text p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .story-image {
+        width: 100%;
+        min-height: 280px; /* Λίγο μικρότερο ύψος για να φαίνεται όμορφα στο κινητό */
+    }
+}
