@@ -205,4 +205,34 @@ body {
         left: 20px;
         font-size: 13px;
     }
+
+    body {
+        height: auto;
+        min-height: 100vh;
+        align-items: flex-start;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 76px 0 24px;
+    }
+
+    .auth-wrapper {
+        margin: auto;
+    }
+
+    .auth-card {
+        padding: 32px 22px;
+    }
+
+    .auth-tabs {
+        gap: 20px;
+        margin-bottom: 28px;
+    }
+
+    .tab-label {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        padding: 6px 4px;
+        font-size: 20px;
+    }
 }

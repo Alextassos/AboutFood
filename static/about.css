@@ -125,16 +125,79 @@ body{
     font-weight: 300;
 }
 
-.story-image {
+.brand-showcase {
+    position: relative;
+    display: flex;
     flex: 0.8;
-    height: 38px;
     min-height: 380px;
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(133, 192, 135, 0.2);
+    border-radius: 14px;
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(76, 175, 80, 0.16), transparent 52%),
+        linear-gradient(145deg, #202820, #101310 72%);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35), inset 0 1px rgba(255, 255, 255, 0.04);
+    isolation: isolate;
+}
+
+.brand-showcase::before {
+    position: absolute;
+    z-index: -1;
+    width: 220px;
+    height: 220px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    content: "";
+}
+
+.brand-showcase-icon {
+    width: 104px;
+    height: 104px;
+    margin-bottom: 22px;
+    color: #62bf68;
+    filter: drop-shadow(0 0 22px rgba(76, 175, 80, 0.24));
+}
+
+.brand-showcase-wordmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.brand-showcase-about {
+    color: #f1f3f1;
+    font-size: clamp(30px, 3vw, 42px);
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
+}
+
+.brand-showcase-food {
+    margin-top: 8px;
+    color: #62bf68;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.55em;
+    padding-left: 0.55em;
+}
+
+.brand-showcase-label {
+    margin-top: 28px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+}
+
+.brand-showcase-caption {
+    margin-top: 9px;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 12px;
+    letter-spacing: 0.04em;
 }
 
 /* ==========================================================================
@@ -236,8 +299,266 @@ body{
         line-height: 1.6;
     }
 
-    .story-image {
+    .brand-showcase {
         width: 100%;
-        min-height: 280px; /* Λίγο μικρότερο ύψος για να φαίνεται όμορφα στο κινητό */
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    #head {
+        height: auto;
+        padding: 14px 10px;
+    }
+
+    #menu {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "brand cart"
+            "search search"
+            "nav nav";
+        align-items: center;
+        gap: 14px 12px;
+    }
+
+    #menu .logo {
+        grid-area: brand;
+    }
+
+    #menu .logo a {
+        margin-top: 0;
+    }
+
+    #menu .search-container {
+        grid-area: search;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #menu .search-container:focus-within {
+        width: 100%;
+        max-width: none;
+    }
+
+    #menu .cart-container {
+        grid-area: cart;
+        margin: 0 4px 0 0;
+    }
+
+    #menu > ul {
+        grid-area: nav;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 4px 18px;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    #menu ul li a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        padding: 6px 0;
+        font-size: 14px;
+    }
+
+    .about-main {
+        padding: 0 16px;
+        margin: 32px auto;
+    }
+
+    .about-header {
+        margin-bottom: 32px;
+    }
+
+    .about-story-section {
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+
+    .brand-showcase {
+        min-height: 240px;
+    }
+
+    .brand-showcase-icon {
+        width: 78px;
+        height: 78px;
+        margin-bottom: 17px;
+    }
+
+    .brand-showcase-label {
+        margin-top: 20px;
+    }
+
+    .main-footer {
+        padding: 44px 20px 24px;
+        margin-top: 56px;
+    }
+
+    .footer-container {
+        gap: 28px;
+    }
+
+    .footer-links {
+        gap: 18px 24px;
+    }
+
+    .footer-links li a {
+        font-size: 13px;
+    }
+}
+
+#head {
+    min-height: 90px;
+    height: auto;
+    background: #3b403b;
+}
+
+#menu {
+    display: flex;
+    width: min(calc(100% - 48px), 1440px);
+    max-width: 1440px;
+    min-height: 90px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0;
+}
+
+#menu .logo a {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
+#menu .search-container {
+    width: clamp(220px, 24vw, 320px);
+    max-width: 320px;
+    min-width: 0;
+    flex: 0 1 320px;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+#menu .search-container:focus-within {
+    width: clamp(220px, 24vw, 320px);
+    max-width: 320px;
+}
+
+#menu .search-input {
+    min-width: 0;
+}
+
+#menu .cart-container {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
+#menu > ul,
+#menu nav ul {
+    display: flex;
+    width: auto;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 2vw, 28px);
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#menu ul li a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 6px 0;
+    box-sizing: border-box;
+    font-size: clamp(13px, 1.1vw, 15px);
+    white-space: nowrap;
+}
+
+#menu nav {
+    width: auto;
+}
+
+@media (max-width: 992px) {
+    #head,
+    #menu {
+        min-height: 0;
+    }
+
+    #head {
+        padding: 0;
+    }
+
+    #menu {
+        display: grid;
+        width: 100%;
+        box-sizing: border-box;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "brand cart"
+            "search search"
+            "nav nav";
+        gap: 14px 12px;
+        padding: 14px 20px;
+    }
+
+    #menu .logo {
+        grid-area: brand;
+    }
+
+    #menu .search-container,
+    #menu .search-container:focus-within {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        grid-area: search;
+        margin: 0;
+    }
+
+    #menu .cart-container {
+        grid-area: cart;
+        margin: 0 4px 0 0;
+    }
+
+    #menu > ul {
+        grid-area: nav;
+        flex-direction: row;
+        width: 100%;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2px 18px;
+    }
+
+    #menu nav {
+        width: 100%;
+        grid-area: nav;
+    }
+
+    #menu nav ul {
+        width: 100%;
+        flex-direction: row;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2px 18px;
+    }
+
+    #menu ul li a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        padding: 6px 0;
+        font-size: 14px;
     }
 }

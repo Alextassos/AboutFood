@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your About Food Marketplace shopping cart.">
+    <title>About Food - Shopping Cart</title>
+    <link rel="stylesheet" href="../static/terms.css">
+    <link rel="stylesheet" href="../static/cart.css">
+</head>
+<body>
+<header id="head">
+    <div id="menu">
+        <div class="logo">
+            <a href="../index.html" aria-label="About Food home">
+                <svg class="modern-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 2C12 2 6 7 6 12C6 17 9.5 20 12 22C14.5 20 18 17 18 12C18 7 12 2 12 2Z" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2V22" stroke="#4CAF50" stroke-width="1.5" stroke-dasharray="2 2"/>
+                    <path d="M12 9C13.5 10 15 9.5 16 8.5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M12 14C10.5 15 9 14.5 8 13.5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text-wrapper">
+                    <span class="logo-text">ABOUT</span>
+                    <span class="logo-subtext">FOOD</span>
+                </span>
+            </a>
+        </div>
+
+        <div class="search-container">
+            <input type="search" placeholder="Search suppliers, products, supplies..." class="search-input" aria-label="Search suppliers and products">
+            <button class="search-btn" type="button" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cart-container">
+            <a href="cart.html" class="cart-btn" aria-label="Shopping cart, 0 items" aria-current="page">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fdeded" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="suppl.html">Suppliers</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="cart-main">
+    <header class="cart-heading">
+        <span class="cart-eyebrow">ABOUT FOOD MARKETPLACE</span>
+        <h1>Your Shopping Cart</h1>
+        <p>Review your selected products before you continue.</p>
+    </header>
+
+    <section class="cart-empty" aria-labelledby="cart-empty-title">
+        <div class="cart-empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 22h36l-3.5 29h-29L14 22Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M24 25v-5a8 8 0 0 1 16 0v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M25 36h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+            </svg>
+        </div>
+        <h2 id="cart-empty-title">Your cart is empty</h2>
+        <p>Explore quality products from our suppliers and find something you love.</p>
+        <a class="cart-browse-button" href="products.html">Browse Products</a>
+        <a class="cart-home-link" href="../index.html">Back to Home</a>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <ul class="footer-links">
+            <li><a href="info.html">Information</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="offers.html">Offers</a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2026 About Food Marketplace. All rights reserved. | Designed &amp; Developed by Alexandros Tassos</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

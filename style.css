@@ -668,3 +668,330 @@ body{
         height: 300px; /* Μικρότερο ύψος στα κινητά */
     }
 }
+
+@media (max-width: 720px) {
+    #head {
+        height: auto;
+    }
+
+    #menu {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "brand cart"
+            "search search"
+            "nav nav";
+        align-items: center;
+        gap: 14px 12px;
+        padding: 16px;
+    }
+
+    #menu .logo {
+        grid-area: brand;
+    }
+
+    #menu .logo a {
+        margin-top: 0;
+    }
+
+    #menu .search-container {
+        grid-area: search;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #menu .search-container:focus-within {
+        width: 100%;
+        max-width: none;
+    }
+
+    #menu .cart-container {
+        grid-area: cart;
+        margin: 0 4px 0 0;
+    }
+
+    #menu > ul {
+        grid-area: nav;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px 18px;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    #menu ul li a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        padding: 6px 0;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        min-height: 360px;
+        padding: 60px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .supplier-cta-section,
+    .buyers-section,
+    .features-section {
+        padding: 56px 20px;
+    }
+
+    .supplier-title {
+        white-space: normal;
+        font-size: 25px;
+        line-height: 1.3;
+    }
+
+    .supplier-content p,
+    .buyers-content p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .buyers-container {
+        gap: 30px;
+    }
+
+    .buyers-slideshow {
+        height: 240px;
+    }
+
+    .features-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .feature-card {
+        padding: 12px 8px;
+    }
+
+    .main-footer {
+        padding: 44px 20px 24px;
+    }
+
+    .footer-container {
+        gap: 28px;
+    }
+
+    .footer-links {
+        gap: 18px 24px;
+    }
+
+    .footer-links li a {
+        font-size: 13px;
+    }
+}
+
+#head {
+    min-height: 90px;
+    height: auto;
+    background: #3b403b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#menu {
+    display: flex;
+    width: min(calc(100% - 48px), 1440px);
+    max-width: 1440px;
+    min-height: 90px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0;
+}
+
+#menu .logo a {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
+#menu .search-container {
+    width: clamp(220px, 24vw, 320px);
+    max-width: 320px;
+    min-width: 0;
+    flex: 0 1 320px;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+#menu .search-container:focus-within {
+    width: clamp(220px, 24vw, 320px);
+    max-width: 320px;
+}
+
+#menu .search-input {
+    min-width: 0;
+}
+
+#menu .cart-container {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
+#menu > ul,
+#menu nav ul {
+    display: flex;
+    width: auto;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 2vw, 28px);
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#menu ul li a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 6px 0;
+    box-sizing: border-box;
+    font-size: clamp(13px, 1.1vw, 15px);
+    white-space: nowrap;
+}
+
+#menu nav {
+    width: auto;
+}
+
+.hero-section {
+    height: auto;
+    min-height: clamp(400px, 42vw, 520px);
+    padding: clamp(60px, 8vw, 110px) clamp(24px, 10vw, 144px);
+}
+
+.hero-content {
+    max-width: 560px;
+}
+
+.hero-content h1 {
+    color: #ffffff;
+    font-size: clamp(36px, 4.8vw, 58px);
+    font-family: 'Montserrat', sans-serif, system-ui;
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 1.08;
+    text-wrap: balance;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.32);
+}
+
+.hero-highlight {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    background: linear-gradient(100deg, #8ae18e 0%, #4caf50 70%, #b5ef9a 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    max-width: 500px;
+    color: #ededed;
+}
+
+@media (max-width: 992px) {
+    #head,
+    #menu {
+        min-height: 0;
+    }
+
+    #menu {
+        display: grid;
+        width: 100%;
+        box-sizing: border-box;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "brand cart"
+            "search search"
+            "nav nav";
+        gap: 14px 12px;
+        padding: 14px 20px;
+    }
+
+    #menu .logo {
+        grid-area: brand;
+    }
+
+    #menu .search-container,
+    #menu .search-container:focus-within {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        box-sizing: border-box;
+        grid-area: search;
+        margin: 0;
+    }
+
+    #menu .cart-container {
+        grid-area: cart;
+        margin: 0 4px 0 0;
+    }
+
+    #menu > ul {
+        grid-area: nav;
+        width: 100%;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2px 18px;
+    }
+
+    #menu nav {
+        width: 100%;
+        grid-area: nav;
+    }
+
+    #menu nav ul {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 2px 18px;
+    }
+
+    #menu ul li a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        padding: 6px 0;
+        font-size: 14px;
+    }
+
+    .hero-section {
+        min-height: 380px;
+        padding: 64px 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        min-height: 360px;
+        padding: 56px 22px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(30px, 8vw, 36px);
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+}
