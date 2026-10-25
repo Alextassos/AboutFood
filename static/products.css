@@ -170,8 +170,8 @@ body{
 /* Layout του Grid */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 35px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px;
 }
 
 /* Η κάρτα του προϊόντος */
@@ -193,7 +193,7 @@ body{
 /* Το box της εικόνας */
 .product-image {
     width: 100%;
-    height: 220px;
+    height: 175px;
     background-size: cover;
     background-position: center;
     background-color: #1a1a1a;
@@ -201,10 +201,10 @@ body{
 
 /* Πληροφορίες προϊόντος */
 .product-info {
-    padding: 22px;
+    padding: 17px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .supplier-tag {
@@ -216,16 +216,16 @@ body{
 }
 
 .product-info h3 {
-    font-size: 18px;
+    font-size: 17px;
     color: #ffffff;
     font-weight: bold;
     line-height: 1.3;
-    height: 48px; /* Κλειδώνει το ύψος για να είναι στοιχισμένα τα κουμπιά */
+    min-height: 44px;
     overflow: hidden;
 }
 
 .product-price {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 300;
     color: #e0e0e0;
     margin-bottom: 10px;
@@ -237,7 +237,7 @@ body{
     background-color: transparent;
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 12px;
+    padding: 10px;
     font-size: 14px;
     font-weight: bold;
     border-radius: 4px;
@@ -308,7 +308,7 @@ body{
 
     /* Το grid προσαρμόζεται για μικρές οθόνες */
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
         gap: 20px;
     }
 }
@@ -379,13 +379,34 @@ body{
     }
 
     .products-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 18px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
     }
 
     .product-info h3 {
         height: auto;
-        min-height: 48px;
+        min-height: 44px;
+    }
+
+    .product-image {
+        height: 135px;
+    }
+
+    .product-info {
+        padding: 14px;
+    }
+
+    .supplier-tag {
+        font-size: 10px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .btn-add-cart {
+        padding: 9px 6px;
+        font-size: 12px;
     }
 
     .main-footer {
@@ -403,6 +424,16 @@ body{
 
     .footer-links li a {
         font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .products-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .product-image {
+        height: 165px;
     }
 }
 
