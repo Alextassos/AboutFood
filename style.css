@@ -414,6 +414,102 @@ body{
     30% { opacity: 0; }     /* Εξαφάνιση (Fade out) */
     100% { opacity: 0; }
 }
+
+.offers-spotlight {
+    position: relative;
+    display: flex;
+    min-height: 260px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    overflow: hidden;
+    padding: 54px max(40px, calc((100% - 1320px) / 2));
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background:
+        radial-gradient(ellipse at 86% 50%, rgba(76, 175, 80, 0.16), transparent 34%),
+        rgba(0, 0, 0, 0.42);
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.offers-spotlight-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+}
+
+.offers-spotlight-eyebrow {
+    color: #80ce84;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.offers-spotlight h2 {
+    margin-top: 12px;
+    color: #f5f6f5;
+    font-size: clamp(27px, 4vw, 38px);
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.offers-spotlight p {
+    max-width: 590px;
+    margin-top: 12px;
+    color: #c4c9c4;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.btn-offers {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 0 20px;
+    border: 1px solid rgba(128, 206, 132, 0.65);
+    border-radius: 5px;
+    background: rgba(76, 175, 80, 0.12);
+    color: #a5e2a8;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-offers:hover {
+    transform: translateY(-2px);
+    border-color: #4caf50;
+    background: #4caf50;
+    color: #fff;
+}
+
+.btn-offers span {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.btn-offers:hover span {
+    transform: translateX(3px);
+}
+
+.offers-spotlight-mark {
+    display: grid;
+    width: 142px;
+    height: 142px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(128, 206, 132, 0.24);
+    border-radius: 50%;
+    background: rgba(76, 175, 80, 0.07);
+    color: rgba(139, 211, 143, 0.78);
+    font-family: Georgia, serif;
+    font-size: 72px;
+    transform: rotate(-12deg);
+}
+
 /* ==========================================================================
    FEATURES SECTION STYLING
    ========================================================================== */
@@ -747,8 +843,22 @@ body{
 
     .supplier-cta-section,
     .buyers-section,
+    .offers-spotlight,
     .features-section {
         padding: 56px 20px;
+    }
+
+    .offers-spotlight {
+        min-height: 0;
+        text-align: center;
+    }
+
+    .offers-spotlight-content {
+        margin: 0 auto;
+    }
+
+    .offers-spotlight-mark {
+        display: none;
     }
 
     .supplier-title {

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore special offers from food suppliers and producers on About Food.">
+    <title>About Food - Offers</title>
+    <link rel="stylesheet" href="../static/terms.css">
+    <link rel="stylesheet" href="../static/offers.css">
+</head>
+<body>
+<header id="head">
+    <div id="menu">
+        <div class="logo">
+            <a href="../index.html" aria-label="About Food home">
+                <svg class="modern-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 2C12 2 6 7 6 12C6 17 9.5 20 12 22C14.5 20 18 17 18 12C18 7 12 2 12 2Z" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2V22" stroke="#4CAF50" stroke-width="1.5" stroke-dasharray="2 2"/>
+                    <path d="M12 9C13.5 10 15 9.5 16 8.5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M12 14C10.5 15 9 14.5 8 13.5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text-wrapper">
+                    <span class="logo-text">ABOUT</span>
+                    <span class="logo-subtext">FOOD</span>
+                </span>
+            </a>
+        </div>
+
+        <div class="search-container">
+            <input type="search" placeholder="Search suppliers, products, supplies..." class="search-input" aria-label="Search suppliers and products">
+            <button class="search-btn" type="button" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cart-container">
+            <a href="cart.html" class="cart-btn" aria-label="Shopping cart, 0 items">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fdeded" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="suppliers.html">Suppliers</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="auth.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="offers-main">
+    <section class="offers-hero" aria-labelledby="offers-title">
+        <span class="offers-eyebrow">A LITTLE MORE FOR LESS</span>
+        <h1 id="offers-title">Offers from our suppliers</h1>
+        <p>Explore special prices and seasonal picks from food producers and businesses across the marketplace.</p>
+        <a href="#offer-list" class="offers-scroll-link">Browse current offers <span aria-hidden="true">&darr;</span></a>
+    </section>
+
+    <p class="offers-preview-note"><strong>Marketplace preview:</strong> These sample offers demonstrate how supplier promotions will appear. Live offers will be published by suppliers when marketplace accounts are connected.</p>
+
+    <section class="offers-list" id="offer-list" aria-label="Supplier offers">
+        <article class="offer-card">
+            <div class="offer-image offer-image-olive" role="img" aria-label="Olive oil bottle"></div>
+            <div class="offer-info">
+                <div class="offer-meta"><span>Papadopoulos Farms</span><span class="offer-badge">Sample offer</span></div>
+                <h2>Extra Virgin Olive Oil 1L</h2>
+                <p class="offer-description">A smooth, everyday olive oil from a local producer.</p>
+                <div class="offer-price"><del>12.50 &euro;</del><strong>10.90 &euro;</strong></div>
+                <a href="products.html" class="offer-link">Explore product <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </article>
+
+        <article class="offer-card">
+            <div class="offer-image offer-image-seafood" role="img" aria-label="Fresh seafood"></div>
+            <div class="offer-info">
+                <div class="offer-meta"><span>Aegean Seafood Co.</span><span class="offer-badge">Sample offer</span></div>
+                <h2>Fresh Sea Bass (Lavraki)</h2>
+                <p class="offer-description">Freshly sourced sea bass for a seasonal table.</p>
+                <div class="offer-price"><del>18.90 &euro; / kg</del><strong>16.90 &euro; / kg</strong></div>
+                <a href="products.html" class="offer-link">Explore product <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </article>
+
+        <article class="offer-card">
+            <div class="offer-image offer-image-wine" role="img" aria-label="Red wine"></div>
+            <div class="offer-info">
+                <div class="offer-meta"><span>Nemea Winery</span><span class="offer-badge">Sample offer</span></div>
+                <h2>Agiorgitiko Dry Red Wine</h2>
+                <p class="offer-description">A classic red wine from the Nemea region.</p>
+                <div class="offer-price"><del>14.20 &euro;</del><strong>12.80 &euro;</strong></div>
+                <a href="products.html" class="offer-link">Explore product <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </article>
+
+        <article class="offer-card">
+            <div class="offer-image offer-image-dairy" role="img" aria-label="Traditional cheese"></div>
+            <div class="offer-info">
+                <div class="offer-meta"><span>Arcadian Dairy</span><span class="offer-badge">Sample offer</span></div>
+                <h2>Traditional Feta Cheese</h2>
+                <p class="offer-description">Traditional feta with a rich, tangy flavour.</p>
+                <div class="offer-price"><del>9.80 &euro; / kg</del><strong>8.90 &euro; / kg</strong></div>
+                <a href="products.html" class="offer-link">Explore product <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <ul class="footer-links">
+            <li><a href="info.html">Information</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="offers.html" aria-current="page">Offers</a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2026 About Food Marketplace. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

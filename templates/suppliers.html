@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover food suppliers and producers featured on the About Food Marketplace.">
+    <title>About Food - Suppliers</title>
+    <link rel="stylesheet" href="../static/terms.css">
+    <link rel="stylesheet" href="../static/suppliers.css">
+</head>
+<body>
+<header id="head">
+    <div id="menu">
+        <div class="logo">
+            <a href="../index.html" aria-label="About Food home">
+                <svg class="modern-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12 2C12 2 6 7 6 12C6 17 9.5 20 12 22C14.5 20 18 17 18 12C18 7 12 2 12 2Z" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2V22" stroke="#4CAF50" stroke-width="1.5" stroke-dasharray="2 2"/>
+                    <path d="M12 9C13.5 10 15 9.5 16 8.5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M12 14C10.5 15 9 14.5 8 13.5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text-wrapper">
+                    <span class="logo-text">ABOUT</span>
+                    <span class="logo-subtext">FOOD</span>
+                </span>
+            </a>
+        </div>
+
+        <div class="search-container">
+            <input type="search" placeholder="Search suppliers, products, supplies..." class="search-input" aria-label="Search suppliers and products">
+            <button class="search-btn" type="button" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cart-container">
+            <a href="cart.html" class="cart-btn" aria-label="Shopping cart, 0 items">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fdeded" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="suppliers.html" aria-current="page">Suppliers</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="suppliers-main">
+    <section class="suppliers-hero" aria-labelledby="suppliers-title">
+        <span class="suppliers-eyebrow">MEET THE PEOPLE BEHIND THE PRODUCE</span>
+        <h1 id="suppliers-title">Our Suppliers</h1>
+        <p>Discover food businesses and producers featured on About Food, and explore the products they bring to the marketplace.</p>
+        <a href="#supplier-directory" class="suppliers-hero-link">Explore suppliers <span aria-hidden="true">&darr;</span></a>
+    </section>
+
+    <section class="supplier-directory" id="supplier-directory" aria-labelledby="directory-title">
+        <div class="directory-heading">
+            <div>
+                <h2 id="directory-title">Find your next favourite</h2>
+                <p>Browse suppliers by name or product category.</p>
+            </div>
+            <p class="supplier-result-count" aria-live="polite">4 suppliers</p>
+        </div>
+
+        <div class="supplier-tools">
+            <label class="supplier-search">
+                <span class="visually-hidden">Search suppliers</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="search" id="supplier-search" placeholder="Search suppliers or products..." autocomplete="off">
+            </label>
+            <div class="supplier-filters" role="group" aria-label="Filter suppliers by category">
+                <button type="button" class="supplier-filter is-active" data-category="all" aria-pressed="true">All suppliers</button>
+                <button type="button" class="supplier-filter" data-category="olive-oil" aria-pressed="false">Olive oil</button>
+                <button type="button" class="supplier-filter" data-category="seafood" aria-pressed="false">Seafood</button>
+                <button type="button" class="supplier-filter" data-category="wine" aria-pressed="false">Wine</button>
+                <button type="button" class="supplier-filter" data-category="dairy" aria-pressed="false">Dairy</button>
+            </div>
+        </div>
+
+        <div class="supplier-grid">
+            <article class="supplier-card" data-category="olive-oil" data-search="papadopoulos farms extra virgin olive oil olive oil">
+                <div class="supplier-card-top">
+                    <span class="supplier-monogram" aria-hidden="true">PF</span>
+                    <span class="supplier-category">Olive oil</span>
+                </div>
+                <div class="supplier-card-body">
+                    <h3>Papadopoulos Farms</h3>
+                    <p>Explore extra virgin olive oil from this marketplace supplier.</p>
+                    <span class="supplier-product">Extra Virgin Olive Oil 1L</span>
+                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </article>
+
+            <article class="supplier-card" data-category="seafood" data-search="aegean seafood co fresh sea bass lavraki seafood">
+                <div class="supplier-card-top">
+                    <span class="supplier-monogram" aria-hidden="true">AS</span>
+                    <span class="supplier-category">Seafood</span>
+                </div>
+                <div class="supplier-card-body">
+                    <h3>Aegean Seafood Co.</h3>
+                    <p>Browse seafood from this marketplace supplier.</p>
+                    <span class="supplier-product">Fresh Sea Bass (Lavraki)</span>
+                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </article>
+
+            <article class="supplier-card" data-category="wine" data-search="nemea winery agiorgitiko dry red wine winery wine">
+                <div class="supplier-card-top">
+                    <span class="supplier-monogram" aria-hidden="true">NW</span>
+                    <span class="supplier-category">Wine</span>
+                </div>
+                <div class="supplier-card-body">
+                    <h3>Nemea Winery</h3>
+                    <p>Discover wine listed by this marketplace supplier.</p>
+                    <span class="supplier-product">Agiorgitiko Dry Red Wine</span>
+                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </article>
+
+            <article class="supplier-card" data-category="dairy" data-search="arcadian dairy traditional feta cheese feta dairy">
+                <div class="supplier-card-top">
+                    <span class="supplier-monogram" aria-hidden="true">AD</span>
+                    <span class="supplier-category">Dairy</span>
+                </div>
+                <div class="supplier-card-body">
+                    <h3>Arcadian Dairy</h3>
+                    <p>Find dairy products listed by this marketplace supplier.</p>
+                    <span class="supplier-product">Traditional Feta Cheese</span>
+                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </article>
+        </div>
+
+        <p class="supplier-empty" hidden>No suppliers match your search. Try another name or category.</p>
+    </section>
+
+    <section class="supplier-invite">
+        <div>
+            <span class="suppliers-eyebrow">GROW WITH ABOUT FOOD</span>
+            <h2>Are you a food supplier?</h2>
+            <p>Join the marketplace and introduce your products to new customers.</p>
+        </div>
+        <a href="auth.html" class="supplier-invite-button">Become a Supplier <span aria-hidden="true">&rarr;</span></a>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <ul class="footer-links">
+            <li><a href="info.html">Information</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="offers.html">Offers</a></li>
+        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2026 About Food Marketplace. All rights reserved. | Designed &amp; Developed by Alexandros Tassos</p>
+        </div>
+    </div>
+</footer>
+<script src="../static/suppliers.js"></script>
+</body>
+</html>
