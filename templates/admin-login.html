@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Administrator sign in for About Food.">
+    <title>Admin sign in - About Food</title>
+    <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body class="admin-auth-page">
+<main class="admin-auth-card">
+    <a class="admin-brand" href="/index.html" aria-label="About Food home">
+        <span class="admin-brand-mark" aria-hidden="true">A</span>
+        <span>ABOUT<span>FOOD</span></span>
+    </a>
+    <p class="admin-eyebrow">ADMINISTRATION</p>
+    <h1>Sign in</h1>
+    {{if not .AdminConfigured}}
+    <p class="admin-message" role="status">Admin access is not configured. Set <code>ADMIN_EMAIL</code> and <code>ADMIN_PASSWORD</code>, then restart the server.</p>
+    {{else}}
+    {{if .Error}}<p class="admin-error" role="alert">{{.Error}}</p>{{end}}
+    <form action="{{.AdminBase}}/login" method="POST" class="admin-form">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <label for="admin-email">Admin email</label>
+        <input type="email" name="email" id="admin-email" autocomplete="username" required>
+        <label for="admin-password">Password</label>
+        <input type="password" name="password" id="admin-password" autocomplete="current-password" required>
+        <button type="submit" class="admin-primary-button">Sign in to admin</button>
+    </form>
+    {{end}}
+    <a class="admin-back-link" href="/index.html">Back to About Food</a>
+</main>
+</body>
+</html>

@@ -2,7 +2,7 @@ const supplierSearch = document.querySelector("#supplier-search");
 const supplierCards = Array.from(document.querySelectorAll(".supplier-card"));
 const supplierFilters = Array.from(document.querySelectorAll(".supplier-filter"));
 const supplierCount = document.querySelector(".supplier-result-count");
-const supplierEmpty = document.querySelector(".supplier-empty");
+const supplierEmpty = document.querySelector(".supplier-search-empty");
 
 let activeCategory = "all";
 
@@ -12,7 +12,7 @@ function updateSuppliers() {
 
     supplierCards.forEach((card) => {
         const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
-        const matchesQuery = card.dataset.search.includes(query);
+        const matchesQuery = card.dataset.search.toLocaleLowerCase().includes(query);
         const isVisible = matchesCategory && matchesQuery;
 
         card.hidden = !isVisible;
@@ -20,7 +20,7 @@ function updateSuppliers() {
     });
 
     supplierCount.textContent = `${visibleCount} ${visibleCount === 1 ? "supplier" : "suppliers"}`;
-    supplierEmpty.hidden = visibleCount !== 0;
+    supplierEmpty.hidden = visibleCount !== 0 || supplierCards.length === 0;
 }
 
 supplierSearch.addEventListener("input", updateSuppliers);

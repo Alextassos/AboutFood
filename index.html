@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Food</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/navigation.css">
 </head>
 <body>
 <header id="head">
@@ -53,7 +54,28 @@
             <li><a href="templates/products.html">Products</a></li>
             <li><a href="templates/suppliers.html">Suppliers</a></li>
             <li><a href="templates/about.html">About us</a></li>
+            {{if .Authenticated}}
+            {{if eq .Role "supplier"}}
+            <li><a href="/supplier/dashboard">Supplier dashboard</a></li>
+            {{end}}
+            <li>
+                <a class="header-profile-link" href="/account" aria-label="View your profile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M5 21a7 7 0 0 1 14 0"></path>
+                    </svg>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <form action="/logout" method="POST" class="header-logout-form">
+                    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                    <button type="submit" class="site-logout-button">Log out</button>
+                </form>
+            </li>
+            {{else}}
             <li><a href="templates/login.html">Login</a></li>
+            {{end}}
         </ul>
     </div>
 </header>
@@ -73,7 +95,7 @@
     </div>
     <div class="supplier-content">
         <p>Expand your business by reaching thousands of wholesale and retail buyers daily. By joining the About Food Marketplace, you gain access to powerful management tools, secure instant payments, and a dedicated network looking for premium food supplies. Showcase your products directly to restaurants, hotels, and food lovers with zero hassle.</p>
-        <a href="supplier-register.html" class="btn-supplier">Start Selling &rarr;</a>
+        <a href="templates/supplier-register.html" class="btn-supplier">Start Selling &rarr;</a>
     </div>
 </section>
 
@@ -144,9 +166,9 @@
 <footer class="main-footer">
     <div class="footer-container">
         <ul class="footer-links">
-            <li><a href="info.html">Information</a></li>
+            <li><a href="templates/info.html">Information</a></li>
             <li><a href="templates/terms.html">Terms & Conditions</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="templates/contact.html">Contact Us</a></li>
             <li><a href="templates/offers.html">Offers</a></li>
         </ul>
         <div class="footer-bottom">

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search and manage About Food accounts.">
+    <title>Manage accounts - About Food Admin</title>
+    <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+<header class="admin-header">
+    <a class="admin-brand" href="{{.AdminBase}}/accounts" aria-label="Admin accounts">
+        <span class="admin-brand-mark" aria-hidden="true">A</span>
+        <span>ABOUT<span>FOOD</span></span>
+    </a>
+    <div class="admin-header-actions">
+        <span class="admin-role-label">Administrator</span>
+        <form action="{{.AdminBase}}/logout" method="POST">
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+            <button type="submit" class="admin-quiet-button">Sign out</button>
+        </form>
+    </div>
+</header>
+
+<main class="admin-main">
+    <section class="admin-heading">
+        <p class="admin-eyebrow">ACCOUNT MANAGEMENT</p>
+        <h1>Accounts</h1>
+        <p>Find buyers and suppliers, block access, or permanently remove an account.</p>
+    </section>
+
+    {{if .Notice}}<p class="admin-notice" role="status">{{.Notice}}</p>{{end}}
+
+    <form action="{{.AdminBase}}/accounts" method="GET" class="admin-search">
+        <label for="account-search">Search accounts</label>
+        <div class="admin-search-row">
+            <input type="search" id="account-search" name="q" value="{{.Query}}" placeholder="Name, business, email or phone">
+            <button type="submit" class="admin-primary-button">Search</button>
+            {{if .Query}}<a href="{{$.AdminBase}}/accounts" class="admin-clear-link">Clear</a>{{end}}
+        </div>
+    </form>
+
+    <div class="admin-results-heading">
+        <h2>{{len .Accounts}} {{if eq (len .Accounts) 1}}account{{else}}accounts{{end}}</h2>
+        {{if .Query}}<span>Matching “{{.Query}}”</span>{{end}}
+    </div>
+
+    <section class="admin-account-grid" aria-label="Account results">
+        {{range .Accounts}}
+        <article class="admin-account-card">
+            <header class="admin-card-header">
+                <div>
+                    <span class="admin-account-type">{{if eq .Role "supplier"}}Supplier{{else}}Buyer{{end}}</span>
+                    <h3>{{if .BusinessName}}{{.BusinessName}}{{else}}{{.Name}}{{end}}</h3>
+                </div>
+                <span class="admin-status {{if .Blocked}}is-blocked{{else}}is-active{{end}}">{{if .Blocked}}Blocked{{else}}Active{{end}}</span>
+            </header>
+            <dl class="admin-account-details">
+                <div><dt>Contact</dt><dd>{{.Name}}</dd></div>
+                <div><dt>Email</dt><dd>{{.Email}}</dd></div>
+                <div><dt>Phone</dt><dd>{{if .Phone}}{{.Phone}}{{else}}Not provided{{end}}</dd></div>
+                {{if eq .Role "supplier"}}<div><dt>Category</dt><dd>{{.Category}}</dd></div>{{end}}
+                <div><dt>Joined</dt><dd>{{.CreatedAt}}</dd></div>
+            </dl>
+            <div class="admin-card-actions">
+                {{if .Blocked}}
+                <form action="{{$.AdminBase}}/accounts/{{.ID}}/unblock" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="hidden" name="q" value="{{$.Query}}">
+                    <button type="submit" class="admin-secondary-button">Unblock account</button>
+                </form>
+                {{else}}
+                <form action="{{$.AdminBase}}/accounts/{{.ID}}/block" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="hidden" name="q" value="{{$.Query}}">
+                    <button type="submit" class="admin-secondary-button">Block account</button>
+                </form>
+                {{end}}
+                <form action="{{$.AdminBase}}/accounts/{{.ID}}/delete" method="POST" onsubmit="return confirm('Permanently delete this account and its products?')">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <input type="hidden" name="q" value="{{$.Query}}">
+                    <button type="submit" class="admin-delete-button">Delete permanently</button>
+                </form>
+            </div>
+        </article>
+        {{else}}
+        <p class="admin-empty">No accounts matched your search.</p>
+        {{end}}
+    </section>
+</main>
+</body>
+</html>

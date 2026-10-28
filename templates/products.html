@@ -6,6 +6,7 @@
     <title>About Food - Marketplace Products</title>
     <!-- Σύνδεση με το δικό της CSS στον static φάκελο -->
     <link rel="stylesheet" href="/static/products.css">
+    <link rel="stylesheet" href="/static/navigation.css">
 </head>
 <body>
 
@@ -55,7 +56,20 @@
             <li><a href="products.html" class="active">Products</a></li>
             <li><a href="suppliers.html">Suppliers</a></li>
             <li><a href="about.html">About us</a></li>
-            <li><a href="auth.html">Login</a></li>
+            {{if .Authenticated}}
+            {{if eq .Role "supplier"}}
+            <li><a href="/supplier/dashboard">Supplier dashboard</a></li>
+            {{end}}
+            <li><a href="/account">Profile</a></li>
+            <li>
+                <form action="/logout" method="POST" class="header-logout-form">
+                    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                    <button type="submit" class="site-logout-button">Log out</button>
+                </form>
+            </li>
+            {{else}}
+            <li><a href="/templates/login.html">Login</a></li>
+            {{end}}
         </ul>
     </div>
 </header>
@@ -63,57 +77,38 @@
 <!-- Κύριο Περιεχόμενο Προϊόντων -->
 <main class="products-main">
     <div class="products-header">
-        <h2>Marketplace Supplies</h2>
-        <p>Premium quality items directly from verified producers</p>
+        <div>
+            <span class="products-eyebrow">ABOUT FOOD MARKETPLACE</span>
+            <h1>Products</h1>
+            <p>Browse products offered directly by marketplace suppliers.</p>
+        </div>
     </div>
 
-    <!-- Grid Προϊόντων -->
     <div class="products-grid">
-        
-        <!-- Προϊόν 1 -->
-        <div class="product-card">
-            <div class="product-image" style="background-image: url('/static/photos/prod1.jpg');"></div>
-            <div class="product-info">
-                <span class="supplier-tag">By Papadopoulos Farms</span>
-                <h3>Extra Virgin Olive Oil 1L</h3>
-                <p class="product-price">12.50 €</p>
-                <button class="btn-add-cart">Add to Cart</button>
+        {{range .Products}}
+        <article class="product-card">
+            <div class="product-card-top">
+                <span class="product-category">{{.CategoryLabel}}</span>
+                <span class="product-availability"><span aria-hidden="true"></span>Available</span>
             </div>
-        </div>
-
-        <!-- Προϊόν 2 -->
-        <div class="product-card">
-            <div class="product-image" style="background-image: url('/static/photos/prod2.jpg');"></div>
             <div class="product-info">
-                <span class="supplier-tag">Aegean Seafood Co.</span>
-                <h3>Fresh Sea Bass (Lavraki)</h3>
-                <p class="product-price">18.90 € / kg</p>
-                <button class="btn-add-cart">Add to Cart</button>
+                <h3>{{.Name}}</h3>
+                <p class="product-description">{{if .Description}}{{.Description}}{{else}}Contact the supplier for more product details.{{end}}</p>
             </div>
-        </div>
-
-        <!-- Προϊόν 3 -->
-        <div class="product-card">
-            <div class="product-image" style="background-image: url('/static/photos/prod3.jpg');"></div>
-            <div class="product-info">
-                <span class="supplier-tag">Nemea Winery</span>
-                <h3>Agiorgitiko Dry Red Wine</h3>
-                <p class="product-price">14.20 €</p>
-                <button class="btn-add-cart">Add to Cart</button>
+            <div class="product-card-footer">
+                <div class="product-supplier">
+                    <span class="supplier-label">SUPPLIER</span>
+                    <span class="supplier-name">{{.SupplierName}}</span>
+                </div>
+                <p class="product-price">
+                    <strong>{{printf "%.2f" .Price}} €</strong>
+                    {{if .Unit}}<span>{{.Unit}}</span>{{end}}
+                </p>
             </div>
-        </div>
-
-        <!-- Προϊόν 4 -->
-        <div class="product-card">
-            <div class="product-image" style="background-image: url('/static/photos/prod4.jpg');"></div>
-            <div class="product-info">
-                <span class="supplier-tag">Arcadian Dairy</span>
-                <h3>Traditional Feta Cheese</h3>
-                <p class="product-price">9.80 € / kg</p>
-                <button class="btn-add-cart">Add to Cart</button>
-            </div>
-        </div>
-
+        </article>
+        {{else}}
+        <p class="products-empty">No supplier products are available yet. Please check back soon.</p>
+        {{end}}
     </div>
 </main>
 

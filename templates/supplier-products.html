@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your About Food supplier products.">
+    <title>Manage Products - About Food</title>
+    <link rel="stylesheet" href="/static/supplier-products.css">
+    <link rel="stylesheet" href="/static/navigation.css">
+</head>
+<body>
+<header class="products-header">
+    <a class="products-brand" href="/index.html" aria-label="About Food home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>ABOUT<span>FOOD</span></span>
+    </a>
+    <nav aria-label="Supplier navigation">
+        <a href="/supplier/dashboard">Dashboard</a>
+        <a href="/supplier/products" aria-current="page">Products</a>
+        <a href="/account">My profile</a>
+        <form action="/logout" method="POST" class="header-logout-form">
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+            <button type="submit" class="site-logout-button">Log out</button>
+        </form>
+    </nav>
+</header>
+
+<main class="products-main">
+    <div class="page-heading">
+        <div>
+            <p class="page-eyebrow">SUPPLIER PORTAL</p>
+            <h1>Manage your products</h1>
+            <p>Add products to your listings, update details, or remove an item.</p>
+            <p class="supplier-name">Managing listings for {{.Name}}</p>
+        </div>
+        <a class="back-link" href="/supplier/dashboard">← Dashboard</a>
+    </div>
+
+    {{if .Notice}}<p class="form-notice" role="status">{{.Notice}}</p>{{end}}
+    {{if .Error}}<p class="form-error" role="alert">{{.Error}}</p>{{end}}
+
+    <section class="product-form-card" aria-labelledby="add-product-title">
+        <h2 id="add-product-title">Add a product</h2>
+        <form action="/supplier/products" method="POST" class="product-form">
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+            <div class="product-form-grid">
+                <label>
+                    <span>Product name</span>
+                    <input type="text" name="name" maxlength="120" required placeholder="e.g. Extra virgin olive oil">
+                </label>
+                <label>
+                    <span>Category</span>
+                    <select name="category" required>
+                        <option value="" selected disabled>Select a category</option>
+                        <option value="olive-oil">Olive oil</option>
+                        <option value="seafood">Seafood</option>
+                        <option value="wine">Wine</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="produce">Fruit &amp; vegetables</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Price (€)</span>
+                    <input type="number" name="price" min="0.01" max="1000000" step="0.01" required placeholder="12.50">
+                </label>
+                <label>
+                    <span>Unit (optional)</span>
+                    <input type="text" name="unit" maxlength="30" placeholder="per kg, per bottle...">
+                </label>
+                <label class="description-field">
+                    <span>Description (optional)</span>
+                    <textarea name="description" maxlength="1000" rows="3" placeholder="Tell buyers about this product"></textarea>
+                </label>
+                <label class="checkbox-field">
+                    <input type="checkbox" name="active" value="yes" checked>
+                    <span>Show this product in the marketplace</span>
+                </label>
+            </div>
+            <button class="primary-button" type="submit">Add product</button>
+        </form>
+    </section>
+
+    <section class="listings-section" aria-labelledby="listings-title">
+        <div class="listings-heading">
+            <div>
+                <h2 id="listings-title">Your listings</h2>
+                <p>Edit each product below. Only your account can change these listings.</p>
+            </div>
+            <span class="listing-count">{{len .Products}} products</span>
+        </div>
+
+        {{if .Products}}
+        <div class="product-list">
+            {{range .Products}}
+            <article class="product-card">
+                <form action="/supplier/products/{{.ID}}/update" method="POST" class="edit-product-form">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <div class="product-card-heading">
+                        <h3>Product #{{.ID}}</h3>
+                        <span class="listing-status {{if .Active}}is-active{{else}}is-hidden{{end}}">{{if .Active}}Visible{{else}}Hidden{{end}}</span>
+                    </div>
+                    <div class="product-form-grid">
+                        <label>
+                            <span>Product name</span>
+                            <input type="text" name="name" maxlength="120" value="{{.Name}}" required>
+                        </label>
+                        <label>
+                            <span>Category</span>
+                            <select name="category" required>
+                                <option value="olive-oil" {{if eq .Category "olive-oil"}}selected{{end}}>Olive oil</option>
+                                <option value="seafood" {{if eq .Category "seafood"}}selected{{end}}>Seafood</option>
+                                <option value="wine" {{if eq .Category "wine"}}selected{{end}}>Wine</option>
+                                <option value="dairy" {{if eq .Category "dairy"}}selected{{end}}>Dairy</option>
+                                <option value="produce" {{if eq .Category "produce"}}selected{{end}}>Fruit &amp; vegetables</option>
+                                <option value="other" {{if eq .Category "other"}}selected{{end}}>Other</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Price (€)</span>
+                            <input type="number" name="price" min="0.01" max="1000000" step="0.01" value="{{printf "%.2f" .Price}}" required>
+                        </label>
+                        <label>
+                            <span>Unit</span>
+                            <input type="text" name="unit" maxlength="30" value="{{.Unit}}">
+                        </label>
+                        <label class="description-field">
+                            <span>Description</span>
+                            <textarea name="description" maxlength="1000" rows="3">{{.Description}}</textarea>
+                        </label>
+                        <label class="checkbox-field">
+                            <input type="checkbox" name="active" value="yes" {{if .Active}}checked{{end}}>
+                            <span>Show in marketplace</span>
+                        </label>
+                    </div>
+                    <div class="product-actions">
+                        <button class="primary-button" type="submit">Save changes</button>
+                    </div>
+                </form>
+                <form action="/supplier/products/{{.ID}}/delete" method="POST" class="delete-form" onsubmit="return confirm('Delete this product? This cannot be undone.');">
+                    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+                    <button class="delete-button" type="submit">Delete product</button>
+                </form>
+            </article>
+            {{end}}
+        </div>
+        {{else}}
+        <div class="empty-state">
+            <span aria-hidden="true">▦</span>
+            <h3>No products yet</h3>
+            <p>Add your first product using the form above. It will be saved to your supplier account.</p>
+        </div>
+        {{end}}
+    </section>
+</main>
+</body>
+</html>

@@ -7,6 +7,7 @@
     <title>About Food - Suppliers</title>
     <link rel="stylesheet" href="../static/terms.css">
     <link rel="stylesheet" href="../static/suppliers.css">
+    <link rel="stylesheet" href="/static/navigation.css">
 </head>
 <body>
 <header id="head">
@@ -53,7 +54,18 @@
                 <li><a href="products.html">Products</a></li>
                 <li><a href="suppliers.html" aria-current="page">Suppliers</a></li>
                 <li><a href="about.html">About us</a></li>
-                <li><a href="login.html">Login</a></li>
+                {{if .Authenticated}}
+                {{if eq .Role "supplier"}}<li><a href="/supplier/dashboard">Supplier dashboard</a></li>{{end}}
+                <li><a href="/account">Profile</a></li>
+                <li>
+                    <form action="/logout" method="POST" class="header-logout-form">
+                        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                        <button type="submit" class="site-logout-button">Log out</button>
+                    </form>
+                </li>
+                {{else}}
+                <li><a href="/templates/login.html">Login</a></li>
+                {{end}}
             </ul>
         </nav>
     </div>
@@ -71,9 +83,9 @@
         <div class="directory-heading">
             <div>
                 <h2 id="directory-title">Find your next favourite</h2>
-                <p>Browse suppliers by name or product category.</p>
+                <p>Browse suppliers by business name or category.</p>
             </div>
-            <p class="supplier-result-count" aria-live="polite">4 suppliers</p>
+            <p class="supplier-result-count" aria-live="polite">{{len .Suppliers}} {{if eq (len .Suppliers) 1}}supplier{{else}}suppliers{{end}}</p>
         </div>
 
         <div class="supplier-tools">
@@ -83,7 +95,7 @@
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="search" id="supplier-search" placeholder="Search suppliers or products..." autocomplete="off">
+                <input type="search" id="supplier-search" placeholder="Search by supplier name or category..." autocomplete="off">
             </label>
             <div class="supplier-filters" role="group" aria-label="Filter suppliers by category">
                 <button type="button" class="supplier-filter is-active" data-category="all" aria-pressed="true">All suppliers</button>
@@ -91,64 +103,31 @@
                 <button type="button" class="supplier-filter" data-category="seafood" aria-pressed="false">Seafood</button>
                 <button type="button" class="supplier-filter" data-category="wine" aria-pressed="false">Wine</button>
                 <button type="button" class="supplier-filter" data-category="dairy" aria-pressed="false">Dairy</button>
+                <button type="button" class="supplier-filter" data-category="produce" aria-pressed="false">Produce</button>
+                <button type="button" class="supplier-filter" data-category="other" aria-pressed="false">Other</button>
             </div>
         </div>
 
         <div class="supplier-grid">
-            <article class="supplier-card" data-category="olive-oil" data-search="papadopoulos farms extra virgin olive oil olive oil">
+            {{range .Suppliers}}
+            <article class="supplier-card" data-category="{{.Category}}" data-search="{{.BusinessName}} {{.CategoryLabel}}">
                 <div class="supplier-card-top">
-                    <span class="supplier-monogram" aria-hidden="true">PF</span>
-                    <span class="supplier-category">Olive oil</span>
+                    <span class="supplier-monogram" aria-hidden="true">AF</span>
+                    <span class="supplier-category">{{.CategoryLabel}}</span>
                 </div>
                 <div class="supplier-card-body">
-                    <h3>Papadopoulos Farms</h3>
-                    <p>Explore extra virgin olive oil from this marketplace supplier.</p>
-                    <span class="supplier-product">Extra Virgin Olive Oil 1L</span>
-                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
+                    <h3>{{.BusinessName}}</h3>
+                    <p>Food supplier on the About Food marketplace.</p>
+                    <span class="supplier-product">{{.ProductCount}} active {{if eq .ProductCount 1}}product{{else}}products{{end}}</span>
+                    <a href="/templates/products.html" class="supplier-products-link">Browse marketplace <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </article>
-
-            <article class="supplier-card" data-category="seafood" data-search="aegean seafood co fresh sea bass lavraki seafood">
-                <div class="supplier-card-top">
-                    <span class="supplier-monogram" aria-hidden="true">AS</span>
-                    <span class="supplier-category">Seafood</span>
-                </div>
-                <div class="supplier-card-body">
-                    <h3>Aegean Seafood Co.</h3>
-                    <p>Browse seafood from this marketplace supplier.</p>
-                    <span class="supplier-product">Fresh Sea Bass (Lavraki)</span>
-                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
-                </div>
-            </article>
-
-            <article class="supplier-card" data-category="wine" data-search="nemea winery agiorgitiko dry red wine winery wine">
-                <div class="supplier-card-top">
-                    <span class="supplier-monogram" aria-hidden="true">NW</span>
-                    <span class="supplier-category">Wine</span>
-                </div>
-                <div class="supplier-card-body">
-                    <h3>Nemea Winery</h3>
-                    <p>Discover wine listed by this marketplace supplier.</p>
-                    <span class="supplier-product">Agiorgitiko Dry Red Wine</span>
-                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
-                </div>
-            </article>
-
-            <article class="supplier-card" data-category="dairy" data-search="arcadian dairy traditional feta cheese feta dairy">
-                <div class="supplier-card-top">
-                    <span class="supplier-monogram" aria-hidden="true">AD</span>
-                    <span class="supplier-category">Dairy</span>
-                </div>
-                <div class="supplier-card-body">
-                    <h3>Arcadian Dairy</h3>
-                    <p>Find dairy products listed by this marketplace supplier.</p>
-                    <span class="supplier-product">Traditional Feta Cheese</span>
-                    <a href="products.html" class="supplier-products-link">Explore products <span aria-hidden="true">&rarr;</span></a>
-                </div>
-            </article>
+            {{else}}
+            <p class="supplier-empty">No active suppliers are listed yet. Please check back soon.</p>
+            {{end}}
         </div>
 
-        <p class="supplier-empty" hidden>No suppliers match your search. Try another name or category.</p>
+        <p class="supplier-empty supplier-search-empty" hidden>No suppliers match your search. Try another name or category.</p>
     </section>
 
     <section class="supplier-invite">
@@ -157,7 +136,7 @@
             <h2>Are you a food supplier?</h2>
             <p>Join the marketplace and introduce your products to new customers.</p>
         </div>
-        <a href="auth.html" class="supplier-invite-button">Become a Supplier <span aria-hidden="true">&rarr;</span></a>
+        <a href="supplier-register.html" class="supplier-invite-button">Become a Supplier <span aria-hidden="true">&rarr;</span></a>
     </section>
 </main>
 

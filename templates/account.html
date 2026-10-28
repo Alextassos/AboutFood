@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your About Food account details.">
+    <title>My Account - About Food</title>
+    <link rel="stylesheet" href="/static/account.css">
+    <link rel="stylesheet" href="/static/navigation.css">
+</head>
+<body>
+<header class="account-header">
+    <a class="account-brand" href="/index.html" aria-label="About Food home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>ABOUT<span>FOOD</span></span>
+    </a>
+    <nav aria-label="Account navigation">
+        <a href="/index.html">Marketplace</a>
+        {{if eq .Role "supplier"}}
+        <a href="/supplier/dashboard">Supplier dashboard</a>
+        <a href="/supplier/products">Manage products</a>
+        {{end}}
+        <a href="/account" aria-current="page">My profile</a>
+        <form action="/logout" method="POST" class="header-logout-form">
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+            <button type="submit" class="site-logout-button">Log out</button>
+        </form>
+    </nav>
+</header>
+
+<main class="account-main">
+    <section class="account-heading">
+        <p class="account-eyebrow">YOUR ACCOUNT</p>
+        <h1>My profile</h1>
+        <p>Review the account details associated with your About Food sign-in.</p>
+    </section>
+
+    <section class="profile-card" aria-labelledby="profile-details-title">
+        <div class="profile-card-heading">
+            <span class="profile-avatar" aria-hidden="true">A</span>
+            <div>
+                <h2 id="profile-details-title">{{.Name}}</h2>
+                <p>{{if eq .Role "supplier"}}Supplier account{{else}}Buyer account{{end}}</p>
+            </div>
+        </div>
+
+        <dl class="profile-details">
+            <div>
+                <dt>Full name</dt>
+                <dd>{{.Name}}</dd>
+            </div>
+            <div>
+                <dt>Email address</dt>
+                <dd>{{.Email}}</dd>
+            </div>
+            <div>
+                <dt>Phone</dt>
+                <dd>{{if .Phone}}{{.Phone}}{{else}}Not provided{{end}}</dd>
+            </div>
+            {{if eq .Role "supplier"}}
+            <div>
+                <dt>Business name</dt>
+                <dd>{{.BusinessName}}</dd>
+            </div>
+            <div>
+                <dt>Main product category</dt>
+                <dd>{{.Category}}</dd>
+            </div>
+            <div>
+                <dt>Supplier status</dt>
+                <dd><span class="status-badge">Approved</span></dd>
+            </div>
+            {{end}}
+            <div>
+                <dt>Account type</dt>
+                <dd>{{if eq .Role "supplier"}}Supplier{{else}}Buyer{{end}}</dd>
+            </div>
+        </dl>
+    </section>
+
+    {{if eq .Role "supplier"}}
+    <section class="account-callout">
+        <div>
+            <h2>Your marketplace products</h2>
+            <p>Add listings, update their details, or remove products that are no longer available.</p>
+        </div>
+        <a href="/supplier/products">Manage products <span aria-hidden="true">→</span></a>
+    </section>
+    {{end}}
+</main>
+</body>
+</html>

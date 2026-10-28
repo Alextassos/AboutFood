@@ -1,0 +1,107 @@
+.forgot-main {
+    display: flex;
+    width: min(680px, calc(100% - 40px));
+    min-height: calc(100vh - 90px);
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.forgot-brand {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+    color: #f0f3f0;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.forgot-brand-mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(115, 199, 121, 0.3);
+    border-radius: 12px;
+    background: rgba(76, 175, 80, 0.12);
+    color: #73c779;
+    font-size: 20px;
+}
+
+.forgot-brand > span:last-child > span {
+    display: block;
+    margin-top: 3px;
+    color: #73c779;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.forgot-card {
+    padding: clamp(26px, 5vw, 42px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 11px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.16));
+}
+
+.forgot-eyebrow {
+    color: #72c777;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.forgot-card h1 {
+    margin-top: 12px;
+    color: #f3f5f3;
+    font-size: clamp(26px, 5vw, 36px);
+    letter-spacing: -0.8px;
+}
+
+.forgot-card > p:not(.forgot-eyebrow) {
+    max-width: 470px;
+    margin-top: 12px;
+    color: #b4bcb4;
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+.forgot-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.forgot-primary {
+    display: inline-flex;
+    min-height: 43px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-radius: 6px;
+    background: #4caf50;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.forgot-primary:hover {
+    background: #45a049;
+}
+
+.forgot-secondary {
+    color: #a7dbaa;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.forgot-secondary:hover {
+    text-decoration: underline;
+}

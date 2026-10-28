@@ -18,8 +18,8 @@
 </a>
 
 <!-- Κρυφοί διακόπτες (Radio Buttons) για την εναλλαγή των φορμών χωρίς JavaScript -->
-<input type="radio" name="auth-toggle" id="tab-signin" checked style="display: none;">
-<input type="radio" name="auth-toggle" id="tab-signup" style="display: none;">
+<input type="radio" name="auth-toggle" id="tab-signin" {{if not .ShowSignup}}checked{{end}} style="display: none;">
+<input type="radio" name="auth-toggle" id="tab-signup" {{if .ShowSignup}}checked{{end}} style="display: none;">
 
 <div class="auth-wrapper">
     <div class="auth-card">
@@ -32,6 +32,8 @@
 
         <!-- ==================== ΦΟΡΜΑ SIGN IN (LOGIN) ==================== -->
         <form action="/login" method="POST" class="auth-form form-signin">
+            {{if .Error}}<p class="auth-error" role="alert">{{.Error}}</p>{{end}}
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
             <div class="input-group">
                 <label for="login-email">Email Address</label>
                 <input type="email" id="login-email" name="email" placeholder="enter your email" required>
@@ -51,6 +53,8 @@
 
         <!-- ==================== ΦΟΡΜΑ SIGN UP (REGISTER) ==================== -->
         <form action="/register" method="POST" class="auth-form form-signup">
+            {{if .Error}}<p class="auth-error" role="alert">{{.Error}}</p>{{end}}
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
             <div class="input-group">
                 <label for="reg-name">Full Name / Company Name</label>
                 <input type="text" id="reg-name" name="name" placeholder="enter your name" required>
@@ -71,7 +75,8 @@
 
             <div class="input-group">
                 <label for="reg-password">Password</label>
-                <input type="password" id="reg-password" name="password" placeholder="create a password" required>
+                <input type="password" id="reg-password" name="password" minlength="8" maxlength="72" placeholder="create a password" required>
+                <small class="password-hint">At least 8 characters, one uppercase letter, and one symbol (such as ! or @).</small>
             </div>
 
             <button type="submit" class="btn-auth-submit">Create Account</button>

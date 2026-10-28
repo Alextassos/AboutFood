@@ -127,7 +127,8 @@ body{
     margin-top: 25px;              
 }
 
-#menu ul li a {
+#menu ul li a,
+#menu ul li .header-logout-form button {
     text-decoration: none;
     color: #fdeded;         
     font-family: sans-serif;
@@ -142,9 +143,63 @@ body{
 }
 
 /* Όταν το ποντίκι πάει πάνω στο link (Hover) */
-#menu ul li a:hover {
+#menu ul li a:hover,
+#menu ul li .header-logout-form button:hover {
     color:rgba(255, 255, 255, 0.3);       
     background-size: 100% 2px;  
+}
+
+.header-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.header-profile-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.header-logout-form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.header-logout-form button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0 11px;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    background: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+#menu ul li .header-logout-form button {
+    padding-bottom: 0;
+    background-image: none;
+    color: #fff;
+}
+
+#menu ul li .header-logout-form button:hover {
+    border-color: #45a049;
+    background: #45a049;
+    color: #fff;
+    background-size: auto;
+}
+
+.header-logout-form button:focus-visible {
+    outline: 2px solid #4CAF50;
+    outline-offset: 3px;
 }
 
 .hero-section {
@@ -822,7 +877,8 @@ body{
         background: transparent;
     }
 
-    #menu ul li a {
+    #menu ul li a,
+    #menu ul li .header-logout-form button {
         display: inline-flex;
         min-height: 40px;
         align-items: center;
@@ -967,7 +1023,8 @@ body{
     background: transparent;
 }
 
-#menu ul li a {
+#menu ul li a,
+#menu ul li .header-logout-form button {
     display: inline-flex;
     min-height: 42px;
     align-items: center;
@@ -1077,7 +1134,8 @@ body{
         gap: 2px 18px;
     }
 
-    #menu ul li a {
+    #menu ul li a,
+    #menu ul li .header-logout-form button {
         display: inline-flex;
         min-height: 40px;
         align-items: center;

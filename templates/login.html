@@ -30,6 +30,8 @@
 
         <!-- Φόρμα Σύνδεσης (Sign In Only) -->
         <form action="/login" method="POST" class="login-form">
+            {{if .Error}}<p class="login-error" role="alert">{{.Error}}</p>{{end}}
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
             
             <!-- Πεδίο Email -->
             <div class="input-group">

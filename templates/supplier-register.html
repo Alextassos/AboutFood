@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join About Food as a food supplier.">
+    <title>Become a Supplier - About Food</title>
+    <link rel="stylesheet" href="/static/supplier-register.css">
+</head>
+<body>
+<a class="back-link" href="/index.html">
+    <span aria-hidden="true">←</span>
+    Back to About Food
+</a>
+
+<main class="registration-layout">
+    <section class="registration-intro" aria-labelledby="registration-title">
+        <a class="brand" href="/index.html" aria-label="About Food home">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span>ABOUT<span class="brand-accent">FOOD</span></span>
+        </a>
+        <p class="eyebrow">GROW WITH ABOUT FOOD</p>
+        <h1 id="registration-title">Bring your products to more customers.</h1>
+        <p class="intro-copy">Create a supplier account to introduce your food business to buyers on the About Food marketplace.</p>
+        <div class="intro-note">
+            <span class="note-mark" aria-hidden="true">✳</span>
+            <p>Start by sharing a few details about yourself and your business.</p>
+        </div>
+    </section>
+
+    <section class="registration-card" aria-labelledby="form-title">
+        <div class="form-heading">
+            <p class="eyebrow">SUPPLIER SIGN UP</p>
+            <h2 id="form-title">Create your supplier account</h2>
+            <p>Already have an account? <a href="/templates/login.html">Sign in</a></p>
+        </div>
+
+        <form action="/register/supplier" method="POST">
+            {{if .Error}}<p class="form-error" role="alert">{{.Error}}</p>{{end}}
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="contact-name">Your name</label>
+                    <input type="text" id="contact-name" name="name" autocomplete="name" placeholder="Full name" value="{{.Name}}" required>
+                </div>
+                <div class="form-field">
+                    <label for="business-name">Business name</label>
+                    <input type="text" id="business-name" name="business_name" autocomplete="organization" placeholder="Company or farm name" value="{{.BusinessName}}" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="email">Business email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="you@business.com" value="{{.Email}}" required>
+                </div>
+                <div class="form-field">
+                    <label for="phone">Phone <span class="optional">(optional)</span></label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+30 210 000 0000">
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="category">Main product category</label>
+                <select id="category" name="category" required>
+                    <option value="" {{if not .Category}}selected{{end}} disabled>Select a category</option>
+                    <option value="olive-oil" {{if eq .Category "olive-oil"}}selected{{end}}>Olive oil</option>
+                    <option value="seafood" {{if eq .Category "seafood"}}selected{{end}}>Seafood</option>
+                    <option value="wine" {{if eq .Category "wine"}}selected{{end}}>Wine &amp; beverages</option>
+                    <option value="dairy" {{if eq .Category "dairy"}}selected{{end}}>Dairy</option>
+                    <option value="produce" {{if eq .Category "produce"}}selected{{end}}>Fruit &amp; vegetables</option>
+                    <option value="other" {{if eq .Category "other"}}selected{{end}}>Other food products</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="password">Create a password</label>
+                <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="At least 8 characters" required>
+                <small class="field-hint">Use at least 8 characters, including an uppercase letter and a symbol such as ! or @.</small>
+            </div>
+
+            <label class="terms-consent">
+                <input type="checkbox" name="terms_accepted" value="yes" required>
+                <span>I agree to the <a href="/templates/terms.html">Terms &amp; Conditions</a>.</span>
+            </label>
+
+            <button type="submit" class="submit-button">Create supplier account <span aria-hidden="true">→</span></button>
+        </form>
+
+        <p class="form-security-note">Your account details are submitted securely to About Food.</p>
+    </section>
+</main>
+</body>
+</html>

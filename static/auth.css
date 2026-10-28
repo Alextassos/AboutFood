@@ -141,6 +141,14 @@ body {
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.15);
 }
 
+.password-hint {
+    display: block;
+    margin-top: -14px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
 .select-role option {
     background-color: #1a1a1a;
     color: #ffffff;
@@ -185,6 +193,17 @@ body {
 .auth-forgot a:hover {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: underline;
+}
+
+.auth-error {
+    margin-bottom: 18px;
+    padding: 11px 12px;
+    border: 1px solid rgba(226, 104, 104, 0.35);
+    border-radius: 4px;
+    background: rgba(165, 55, 55, 0.12);
+    color: #f0aaaa;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 /* Animation για smooth εμφάνιση */

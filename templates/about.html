@@ -6,6 +6,7 @@
     <title>About Food - Our Story</title>
     <!-- Σύνδεση με το δικό της CSS στον static φάκελο -->
     <link rel="stylesheet" href="/static/about.css">
+    <link rel="stylesheet" href="/static/navigation.css">
 </head>
 <body>
 
@@ -55,7 +56,18 @@
             <li><a href="products.html">Products</a></li>
             <li><a href="suppliers.html">Suppliers</a></li>
             <li><a href="about.html" class="active">About us</a></li>
-            <li><a href="auth.html">Login</a></li>
+            {{if .Authenticated}}
+            {{if eq .Role "supplier"}}<li><a href="/supplier/dashboard">Supplier dashboard</a></li>{{end}}
+            <li><a href="/account">Profile</a></li>
+            <li>
+                <form action="/logout" method="POST" class="header-logout-form">
+                    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                    <button type="submit" class="site-logout-button">Log out</button>
+                </form>
+            </li>
+            {{else}}
+            <li><a href="/templates/login.html">Login</a></li>
+            {{end}}
         </ul>
     </div>
 </header>

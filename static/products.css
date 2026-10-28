@@ -142,115 +142,240 @@ body{
    ========================================================================== */
 
 .products-main {
-    max-width: 1400px;
-    margin: 60px auto;
-    padding: 0 40px;
-    font-family: sans-serif;
+    width: min(1280px, calc(100% - 48px));
+    margin: 58px auto 80px;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .products-header {
-    margin-bottom: 45px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
 }
 
-.products-header h2 {
-    font-size: 32px;
-    font-weight: 100;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+.products-eyebrow {
+    color: #76c77a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+.products-header h1 {
+    margin-top: 10px;
+    color: #f5f6f5;
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 650;
+    letter-spacing: -0.04em;
 }
 
 .products-header p {
-    color: #b3b3b3;
-    font-size: 16px;
-    font-weight: 300;
+    margin-top: 9px;
+    color: #aeb5ae;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
-/* Layout του Grid */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    align-items: stretch;
+    gap: 18px;
 }
 
-/* Η κάρτα του προϊόντος */
+.products-empty {
+    grid-column: 1 / -1;
+    padding: 42px 24px;
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    color: #b8c0b8;
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.header-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.header-profile-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.header-logout-form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.header-logout-form button:focus-visible {
+    outline: 2px solid #73c779;
+    outline-offset: 3px;
+}
+
+.header-logout-form button {
+    min-height: 32px;
+    padding: 0 11px;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-logout-form button:hover {
+    border-color: #45a049;
+    background: #45a049;
+    color: #fff;
+}
+
+.products-header nav .header-logout-form button:hover {
+    color: #fff;
+}
+
 .product-card {
-    background-color: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    display: flex;
+    min-width: 0;
+    min-height: 260px;
+    flex-direction: column;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.055), rgba(13, 17, 13, 0.72));
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    border-color: #4CAF50;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+    border-color: rgba(118, 199, 122, 0.5);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
 }
 
-/* Το box της εικόνας */
-.product-image {
-    width: 100%;
-    height: 175px;
-    background-size: cover;
-    background-position: center;
-    background-color: #1a1a1a;
-}
-
-/* Πληροφορίες προϊόντος */
-.product-info {
-    padding: 17px;
+.product-card-top {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    min-height: 54px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 17px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.018);
 }
 
-.supplier-tag {
-    font-size: 12px;
+.product-category {
+    color: #9cdda0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #4CAF50;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+}
+
+.product-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #aeb5ae;
+    font-size: 11px;
+}
+
+.product-availability > span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #75c77a;
+    box-shadow: 0 0 0 3px rgba(117, 199, 122, 0.12);
+}
+
+.product-info {
+    flex: 1;
+    padding: 18px 18px 16px;
 }
 
 .product-info h3 {
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: bold;
-    line-height: 1.3;
-    min-height: 44px;
+    color: #f2f4f2;
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.product-description {
+    display: -webkit-box;
     overflow: hidden;
+    margin-top: 9px;
+    color: #abb3ab;
+    font-size: 13px;
+    line-height: 1.65;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.product-card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 18px 17px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.product-supplier {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.supplier-label {
+    color: #7f897f;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.supplier-name {
+    overflow: hidden;
+    color: #d7ddd7;
+    font-size: 12px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .product-price {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    margin: 0;
+    color: #aeb5ae;
+    font-size: 11px;
+}
+
+.product-price strong {
+    color: #9cdda0;
     font-size: 18px;
-    font-weight: 300;
-    color: #e0e0e0;
-    margin-bottom: 10px;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
-/* Διακριτικό Add to Cart κουμπί */
-.btn-add-cart {
-    width: 100%;
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-
-.btn-add-cart:hover {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+.product-price span {
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -298,18 +423,9 @@ body{
         margin: 40px auto;
     }
 
-    .products-header {
-        text-align: center;
-    }
-
-    .products-header h2 {
-        font-size: 26px;
-    }
-
-    /* Το grid προσαρμόζεται για μικρές οθόνες */
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 16px;
     }
 }
 
@@ -375,38 +491,56 @@ body{
     }
 
     .products-main {
-        padding: 0 16px;
+        width: calc(100% - 32px);
+        padding: 0;
     }
 
     .products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        gap: 12px;
     }
 
-    .product-info h3 {
-        height: auto;
-        min-height: 44px;
+    .product-card {
+        min-height: 245px;
     }
 
-    .product-image {
-        height: 135px;
+    .product-card-top {
+        min-height: 48px;
+        gap: 6px;
+        padding: 10px 11px;
+    }
+
+    .product-category,
+    .product-availability {
+        font-size: 9px;
     }
 
     .product-info {
-        padding: 14px;
+        padding: 14px 12px;
     }
 
-    .supplier-tag {
-        font-size: 10px;
+    .product-info h3 {
+        font-size: 15px;
+    }
+
+    .product-description {
+        font-size: 12px;
+        -webkit-line-clamp: 2;
+    }
+
+    .product-card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
     }
 
     .product-price {
-        font-size: 16px;
+        align-items: flex-start;
     }
 
-    .btn-add-cart {
-        padding: 9px 6px;
-        font-size: 12px;
+    .product-price strong {
+        font-size: 16px;
     }
 
     .main-footer {
@@ -432,9 +566,6 @@ body{
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .product-image {
-        height: 165px;
-    }
 }
 
 #head {

@@ -1,0 +1,436 @@
+:root {
+    color-scheme: dark;
+    --admin-bg: #171a17;
+    --admin-panel: #202520;
+    --admin-border: rgba(255, 255, 255, 0.09);
+    --admin-text: #f0f3f0;
+    --admin-muted: #a4ada4;
+    --admin-accent: #73c779;
+    --admin-danger: #ef9c9c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 16% 0, rgba(76, 175, 80, 0.08), transparent 35%),
+        var(--admin-bg);
+    color: var(--admin-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.admin-header {
+    display: flex;
+    min-height: 76px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px clamp(20px, 5vw, 72px);
+    border-bottom: 1px solid var(--admin-border);
+    background: rgba(32, 37, 32, 0.85);
+}
+
+.admin-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--admin-text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.admin-brand > span:last-child > span {
+    display: block;
+    margin-top: 3px;
+    color: var(--admin-accent);
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.admin-brand-mark {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid rgba(115, 199, 121, 0.28);
+    border-radius: 11px;
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--admin-accent);
+    font-size: 18px;
+}
+
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-header-actions form {
+    margin: 0;
+}
+
+.admin-role-label,
+.admin-account-type {
+    color: var(--admin-muted);
+    font-size: 11px;
+}
+
+.admin-quiet-button,
+.admin-secondary-button,
+.admin-delete-button,
+.admin-primary-button {
+    min-height: 38px;
+    padding: 0 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.admin-quiet-button,
+.admin-secondary-button {
+    border: 1px solid var(--admin-border);
+    background: transparent;
+    color: var(--admin-text);
+}
+
+.admin-quiet-button:hover,
+.admin-secondary-button:hover {
+    border-color: var(--admin-accent);
+    color: var(--admin-accent);
+}
+
+.admin-primary-button {
+    border: 1px solid var(--admin-accent);
+    background: var(--admin-accent);
+    color: #142015;
+}
+
+.admin-primary-button:hover {
+    background: #8bd590;
+}
+
+.admin-delete-button {
+    border: 1px solid rgba(239, 156, 156, 0.3);
+    background: rgba(165, 55, 55, 0.08);
+    color: var(--admin-danger);
+}
+
+.admin-delete-button:hover {
+    border-color: var(--admin-danger);
+    background: rgba(165, 55, 55, 0.2);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--admin-accent);
+    outline-offset: 3px;
+}
+
+.admin-main {
+    width: min(1180px, calc(100% - 40px));
+    margin: 48px auto 80px;
+}
+
+.admin-heading {
+    margin-bottom: 30px;
+}
+
+.admin-eyebrow {
+    margin: 0 0 9px;
+    color: var(--admin-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.admin-heading h1,
+.admin-auth-card h1 {
+    margin: 0;
+    font-size: clamp(29px, 4vw, 38px);
+    letter-spacing: -1px;
+}
+
+.admin-heading > p:last-child {
+    margin: 10px 0 0;
+    color: var(--admin-muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.admin-notice,
+.admin-message,
+.admin-error {
+    margin: 0 0 20px;
+    padding: 12px 14px;
+    border: 1px solid rgba(115, 199, 121, 0.25);
+    border-radius: 7px;
+    background: rgba(76, 175, 80, 0.08);
+    color: #bde4c0;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.admin-error {
+    border-color: rgba(239, 156, 156, 0.3);
+    background: rgba(165, 55, 55, 0.1);
+    color: var(--admin-danger);
+}
+
+.admin-search {
+    display: grid;
+    gap: 9px;
+    padding: 17px;
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    background: var(--admin-panel);
+}
+
+.admin-search label,
+.admin-form label {
+    color: #d3d9d3;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.admin-search-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-search input,
+.admin-form input {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--admin-border);
+    border-radius: 6px;
+    background: #191d19;
+    color: var(--admin-text);
+    font-size: 12px;
+}
+
+.admin-search input:focus,
+.admin-form input:focus {
+    border-color: var(--admin-accent);
+}
+
+.admin-clear-link {
+    color: var(--admin-muted);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.admin-clear-link:hover,
+.admin-back-link:hover {
+    color: var(--admin-accent);
+}
+
+.admin-results-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 26px 0 14px;
+}
+
+.admin-results-heading h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.admin-results-heading span {
+    color: var(--admin-muted);
+    font-size: 11px;
+}
+
+.admin-account-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+    gap: 15px;
+}
+
+.admin-account-card {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    background: var(--admin-panel);
+}
+
+.admin-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-account-type {
+    color: var(--admin-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.admin-card-header h3 {
+    overflow-wrap: anywhere;
+    margin: 6px 0 0;
+    font-size: 16px;
+}
+
+.admin-status {
+    flex: 0 0 auto;
+    padding: 5px 8px;
+    border: 1px solid rgba(115, 199, 121, 0.25);
+    border-radius: 999px;
+    background: rgba(76, 175, 80, 0.08);
+    color: #a8d9ac;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.admin-status.is-blocked {
+    border-color: rgba(239, 156, 156, 0.3);
+    background: rgba(165, 55, 55, 0.1);
+    color: var(--admin-danger);
+}
+
+.admin-account-details {
+    display: grid;
+    gap: 10px;
+    margin: 15px 0 18px;
+}
+
+.admin-account-details div {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.admin-account-details dt {
+    color: var(--admin-muted);
+    font-size: 10px;
+}
+
+.admin-account-details dd {
+    overflow-wrap: anywhere;
+    margin: 0;
+    color: #e1e6e1;
+    font-size: 11px;
+}
+
+.admin-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-card-actions form {
+    margin: 0;
+}
+
+.admin-card-actions button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 10px;
+}
+
+.admin-empty {
+    grid-column: 1 / -1;
+    padding: 28px;
+    border: 1px dashed var(--admin-border);
+    border-radius: 9px;
+    color: var(--admin-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.admin-auth-page {
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.admin-auth-card {
+    width: min(420px, 100%);
+    padding: 30px;
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+    background: var(--admin-panel);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.admin-auth-card .admin-brand {
+    margin-bottom: 34px;
+}
+
+.admin-auth-card h1 {
+    margin-bottom: 22px;
+}
+
+.admin-auth-card code {
+    color: var(--admin-accent);
+}
+
+.admin-form {
+    display: grid;
+    gap: 10px;
+}
+
+.admin-form label:not(:first-of-type) {
+    margin-top: 7px;
+}
+
+.admin-form .admin-primary-button {
+    margin-top: 9px;
+}
+
+.admin-back-link {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--admin-muted);
+    font-size: 11px;
+    text-decoration: none;
+}
+
+@media (max-width: 560px) {
+    .admin-header {
+        padding: 12px 16px;
+    }
+
+    .admin-role-label {
+        display: none;
+    }
+
+    .admin-main {
+        width: min(100% - 28px, 1180px);
+        margin-top: 32px;
+    }
+
+    .admin-search-row {
+        flex-wrap: wrap;
+    }
+
+    .admin-search-row input {
+        flex-basis: 100%;
+    }
+
+    .admin-auth-card {
+        padding: 24px 20px;
+    }
+}
