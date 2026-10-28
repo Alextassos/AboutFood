@@ -47,3 +47,36 @@
         transition: none;
     }
 }
+
+@media (max-width: 992px) {
+    #menu .search-btn {
+        width: 44px;
+        min-height: 44px;
+        flex: 0 0 44px;
+        padding: 0;
+    }
+
+    #menu .cart-btn {
+        min-width: 44px;
+        min-height: 44px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard-nav a {
+        min-height: 44px;
+    }
+
+    .panel-link,
+    .profile-action,
+    .dashboard-footer a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+    }
+
+    .footer-actions button.site-logout-button {
+        min-height: 40px;
+    }
+}

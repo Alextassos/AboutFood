@@ -1,12 +1,6 @@
 # About Food
 
-Πριν το deploy, κάνε push στο GitHub τις τελευταίες αλλαγές. Στο Render δημιούργησε Web Service και βάλε:
 
-Build Command: go build -o app .
-Start Command: ./app
-Environment Variables:
-APP_ENV = production
-CSRF_SECRET = ένα σταθερό, τυχαίο μυστικό τουλάχιστον 32 χαρακτήρων
 
 ## Run locally
 
